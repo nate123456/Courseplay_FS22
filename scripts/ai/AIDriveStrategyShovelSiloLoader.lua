@@ -186,7 +186,6 @@ function AIDriveStrategyShovelSiloLoader:initializeImplementControllers(vehicle)
     self:addImplementController(vehicle, WearableController, Wearable, {}, nil)
     ---@type table, ShovelController
     self.shovelImplement, self.shovelController = self:addImplementController(vehicle, ShovelController, Shovel, {}, nil)
-
 end
 
 --- Fuel save only allowed when no trailer is there to unload into.

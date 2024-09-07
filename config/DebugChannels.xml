@@ -12,6 +12,7 @@
 	<DebugChannel active="true"  name="DBG_UNLOAD_COMBINE" 	text="unload combine"/>
 	<DebugChannel active="true"  name="DBG_PATHFINDER" 		text="pathfinder"/>
 	<DebugChannel active="true"  name="DBG_SILO" 			text="bunker silo"/>
+	<DebugChannel active="true"  name="DBG_TERRAFORM" 	text="terraforming"/>
 	<DebugChannel active="true"  name="DBG_REVERSE" 		text="reverse driving"/>
 	<DebugChannel active="true"  name="DBG_TURN" 			text="turns"/>
 	<DebugChannel active="true"  name="DBG_PPC" 			text="ppc controller"/>

@@ -474,11 +474,13 @@ function CpAIJob.registerJob(AIJobTypeManager)
 	local function register(class)
 		AIJobTypeManager:registerJobType(class.name, class.jobName, class)
 	end
+
 	register(CpAIJobBaleFinder)
 	register(CpAIJobFieldWork)
 	register(CpAIJobCombineUnloader)
 	register(CpAIJobSiloLoader)
 	register(CpAIJobBunkerSilo)
+	register(CpAIJobTerraform)
 end
 
 AIJobTypeManager.loadMapData = Utils.appendedFunction(AIJobTypeManager.loadMapData,CpAIJob.registerJob)

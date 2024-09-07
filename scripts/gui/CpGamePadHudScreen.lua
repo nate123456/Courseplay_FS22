@@ -259,3 +259,17 @@ end
 function CpGamePadHudSiloLoaderScreen:drawWorkWidth()
 	self.vehicle:showCpBunkerSiloWorkWidth()
 end
+
+---@class CpGamePadHudTerraformingScreen : CpGamePadHudScreen
+CpGamePadHudTerraformingScreen = {}
+local CpGamePadHudTerraformingScreen_mt = Class(CpGamePadHudTerraformingScreen, CpGamePadHudScreen)
+
+function CpGamePadHudTerraformingScreen.new(settings, target, custom_mt)
+	local self = CpGamePadHudScreen.new(settings, target, custom_mt or CpGamePadHudTerraformingScreen_mt)
+
+	return self
+end
+
+function CpGamePadHudTerraformingScreen:drawWorkWidth()
+	self.vehicle:showCpCourseWorkWidth()
+end

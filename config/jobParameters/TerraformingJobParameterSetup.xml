@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	All the AI fieldwork job parameters
+	For documentation look up the CpSettingUtil.lua.
+-->
+
+<Settings prefixText="CP_tjp_">
+	<SettingSubTitle title="ai_parameterGroupTitlePosition" prefix="false">
+		<Setting classType="CpAIParameterPositionAngle" name="startPosition" positionParameterType="DRIVE_TO"/>
+	</SettingSubTitle>
+	<SettingSubTitle title="CP_fieldWorkJobParameters_fieldPosition_title" prefix="false">
+		<Setting classType="CpAIParameterPosition" name="fieldPosition" positionParameterType="FIELD_OR_SILO"/>
+	</SettingSubTitle>
+	<SettingSubTitle title="flattenHeight">
+		<Setting classType="AIParameterSettingList" name="flattenHeight" generateValuesFunction="generateFlattenHeights" textInput="true" />
+	</SettingSubTitle>
+</Settings>

@@ -350,6 +350,7 @@ function Courseplay.register(typeManager)
 		CpHud.register(typeManager, typeName, typeEntry.specializations)
 		CpInfoTexts.register(typeManager, typeName, typeEntry.specializations)
 		CpShovelPositions.register(typeManager, typeName, typeEntry.specializations)
+		CpAITerraformer.register(typeManager, typeName, typeEntry.specializations)
 	end
 end
 TypeManager.finalizeTypes = Utils.prependedFunction(TypeManager.finalizeTypes, Courseplay.register)

@@ -96,11 +96,11 @@ function ShovelController:getShovelNode()
 end
 
 function ShovelController:isFull()
-    return self:getFillLevelPercentage() >= 99
+    return self:getFillLevelPercentage() >= 98
 end
 
 function ShovelController:isEmpty()
-    return self:getFillLevelPercentage() <= 1
+    return self:getFillLevelPercentage() <= 2
 end
 
 function ShovelController:getFillLevelPercentage()
@@ -136,7 +136,9 @@ function ShovelController:canDischarge(targetTrigger)
     local spec = self.implement.spec_dischargeable
 	if not spec.isAsyncRaycastActive then
         local oldNode = dischargeNode.raycast.node
-        dischargeNode.raycast.node = self.implement.spec_attachable.attacherJoint.node
+        if self.implement.spec_attachable ~= nil then -- not sure if there should be another node for fixed shovels
+            dischargeNode.raycast.node = self.implement.spec_attachable.attacherJoint.node
+        end
 		self.implement:updateRaycast(dischargeNode)
         dischargeNode.raycast.node = oldNode
 	end
@@ -257,7 +259,7 @@ function ShovelController:moveShovelToPosition(pos)
     if self.implement.cpSetShovelState == nil then 
         return false
     end
-    self.implement:cpSetShovelState(pos)
+    self.implement:cpSetTemporaryShovelState(pos)
     return self.implement:areCpShovelPositionsDirty()
 end
 

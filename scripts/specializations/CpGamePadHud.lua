@@ -18,6 +18,7 @@ CpGamePadHud.SETTING_TYPES = {
 	combineUnloaderJobParameters = CpCombineUnloaderJobParameters,
 	bunkerSiloJobParameters = CpBunkerSiloJobParameters,
 	siloLoaderJobParameters = CpSiloLoaderJobParameters,
+	terraformingJobParameters = CpTerraformingJobParameters,
 	globalSettings = CpGlobalSettings
 }
 
@@ -26,13 +27,15 @@ CpGamePadHud.BALE_LOADER_PAGE = "cpBaleLoaderGamePadHudPage"
 CpGamePadHud.UNLOADER_PAGE = "cpUnloaderGamePadHudPage"
 CpGamePadHud.BUNKER_SILO_PAGE = "cpBunkerSiloGamePadHudPage"
 CpGamePadHud.SILO_LOADER_PAGE = "cpSiloLoaderGamePadHudPage"
+CpGamePadHud.TERRAFORM_PAGE = "cpTerraformGamePadHudPage"
 
 CpGamePadHud.PAGE_FILES = {
 	[CpGamePadHud.FIELDWORK_PAGE ] = {"config/gamePadHud/FieldworkGamePadHudPage.xml", CpGamePadHudFieldWorkScreen},
 	[CpGamePadHud.BALE_LOADER_PAGE] = {"config/gamePadHud/BaleLoaderGamePadHudPage.xml", CpGamePadHudBaleLoaderScreen},
 	[CpGamePadHud.UNLOADER_PAGE] = {"config/gamePadHud/UnloaderGamePadHudPage.xml", CpGamePadHudUnloaderScreen},
 	[CpGamePadHud.BUNKER_SILO_PAGE] = {"config/gamePadHud/BunkerSiloGamePadHudPage.xml", CpGamePadHudBunkerSiloScreen},
-	[CpGamePadHud.SILO_LOADER_PAGE] = {"config/gamePadHud/SiloLoaderGamePadHudPage.xml", CpGamePadHudSiloLoaderScreen}
+	[CpGamePadHud.SILO_LOADER_PAGE] = {"config/gamePadHud/SiloLoaderGamePadHudPage.xml", CpGamePadHudSiloLoaderScreen},
+	[CpGamePadHud.TERRAFORM_PAGE] = {"config/gamePadHud/TerraformingGamePadHudPage.xml", CpGamePadHudTerraformingScreen}
 }
 
 function CpGamePadHud.initSpecialization()
@@ -201,7 +204,9 @@ function CpGamePadHud:actionEventOpenCloseDisplay()
         page = CpGamePadHud.UNLOADER_PAGE
     elseif self:cpIsHudStreetJobSelected() then
 		page = CpGamePadHud.FIELDWORK_PAGE
-    end
+	elseif self:cpIsHudTerraformingJobSelected() then
+		page = CpGamePadHud.TERRAFORM_PAGE
+	end
 	if page then
 		spec.isVisible = true
 		CpGamePadHud.pages[page].screen:setData(self, spec.pages[page].settings) 

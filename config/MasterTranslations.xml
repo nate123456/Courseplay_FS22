@@ -322,6 +322,20 @@
 			<Text language="en"><![CDATA[Unload station]]></Text>
 		</Translation>
 	</Category>
+	<Category name="AI Terraforming job parameters">	
+		<Translation name="CP_tjp_flattenHeight_title">
+			<Text language="de"><![CDATA[Flatten height:]]></Text>
+			<Text language="en"><![CDATA[Flatten height:]]></Text>
+		</Translation>
+		<Translation name="CP_tjp_flattenHeight_title_tooltip">
+			<Text language="de"><![CDATA[The terrian height the AI will flatten to]]></Text>
+			<Text language="en"><![CDATA[The terrian height the AI will flatten to]]></Text>
+		</Translation>
+		<Translation name="CP_tjp_subTitle_flattenHeight">
+			<Text language="de"><![CDATA[Flatten height:]]></Text>
+			<Text language="en"><![CDATA[Flatten height:]]></Text>
+		</Translation>
+	</Category>
 	<Category name="AI jobs">
 		<Translation name="CP_job_fieldWork">
 			<Text language="de"><![CDATA[CP: Feldarbeit]]></Text>
@@ -342,6 +356,10 @@
 		<Translation name="CP_job_siloLoader">
 			<Text language="de"><![CDATA[CP: Silo laden]]></Text>
 			<Text language="en"><![CDATA[CP: Silo loading]]></Text>
+		</Translation>
+		<Translation name="CP_job_terraform">
+			<Text language="de"><![CDATA[CP: Terraforming]]></Text>
+			<Text language="en"><![CDATA[CP: Terraforming]]></Text>
 		</Translation>
 		<Translation name="CP_ai_page_generate_course">
 			<Text language="de"><![CDATA[CP: Feldkurs generieren]]></Text>
@@ -456,6 +474,12 @@
 		<Translation name="CP_hud_settings_selectedJob_title">
 			<Text language="de"><![CDATA[TODO: Ausgewählter Job:]]></Text>
 			<Text language="en"><![CDATA[TODO: Selected Job:]]></Text>
+		</Translation>
+	</Category>
+	<Category name="AI Terraformer task descriptions">	
+		<Translation name="CP_ai_taskDescriptionTerraforms">
+			<Text language="de"><![CDATA[Flattens the field]]></Text>
+			<Text language="en"><![CDATA[Flattens the field]]></Text>
 		</Translation>
 	</Category>
 	<Category name="Vehicle settings">	

@@ -642,7 +642,7 @@ end
 ---@param vehicleDirectionNode number Giants node
 ---@param startOffset number offset in meters relative to the vehicle position (forward positive, backward negative) where
 --- we want the turn to start
----@param goalReferenceNode table node used to determine the goal
+---@param goalReferenceNode number node used to determine the goal
 ---@param xOffset number offset in meters relative to the goal node (left positive, right negative)
 ---@param zOffset number offset in meters relative to the goal node (forward positive, backward negative)
 --- Together with the goalReferenceNode defines the goal

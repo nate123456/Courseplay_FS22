@@ -125,6 +125,12 @@ function CpSettingsUtil.getSettingFromParameters(parameters, ...)
 		CpUtil.info("Setting class %s not found!!", parameters.classType)
 		return
 	end
+
+	if classObject == nil then 
+		CpUtil.info("Setting class %s not found!!", parameters.classType)
+		printCallstack()
+	end
+
 	if classObject.new then 
 		return classObject.new(parameters, ...)
 	else 

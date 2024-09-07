@@ -99,6 +99,12 @@
     <text name="CP_siloLoaderJobParameters_unloadAt_trailer" text="Trailer"/>
     <text name="CP_siloLoaderJobParameters_unloadAt_unloadTrigger" text="Unload station"/>
     <!---->
+    <!--AI Terraforming Worker job parameters-->
+    <!---->
+    <text name="CP_tjp_flattenHeight_title" text="Flatten height:"/>
+    <text name="CP_tjp_flattenHeight_title_tooltip" text="The terrian height the AI will flatten to"/>
+    <text name="CP_tjp_subTitle_flattenHeight" text="Flatten height:"/>
+    <!---->
     <!--AI jobs-->
     <!---->
     <text name="CP_job_fieldWork" text="コースプレイ:野外作業"/>

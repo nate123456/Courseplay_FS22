@@ -196,6 +196,8 @@ function CpBaseHud:init(vehicle)
 
     self.siloLoaderWorkerLayout = self:addHudPage(CpSiloLoaderWorkerHudPageElement, vehicle)
 
+    self.terraformingLayout = self:addHudPage(CpTerraformerHudPageElement, vehicle)
+
     --------------------------------------
     --- Header
     --------------------------------------
@@ -537,6 +539,8 @@ function CpBaseHud:getActiveHudPage(vehicle)
         return self.siloLoaderWorkerLayout
     elseif vehicle:cpIsHudUnloaderJobSelected() then
         return self.combineUnloaderLayout
+    elseif vehicle:cpIsHudTerraformingJobSelected() then
+        return self.terraformingLayout
     elseif vehicle:cpIsHudStreetJobSelected() then
       --  return self.fieldworkLayout
     end

@@ -73,6 +73,7 @@ function CpHud.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "cpIsHudBaleFinderJobSelected", CpHud.cpIsHudBaleFinderJobSelected)
     SpecializationUtil.registerFunction(vehicleType, "cpIsHudBunkerSiloJobSelected", CpHud.cpIsHudBunkerSiloJobSelected)
     SpecializationUtil.registerFunction(vehicleType, "cpIsHudSiloLoaderJobSelected", CpHud.cpIsHudSiloLoaderJobSelected)
+    SpecializationUtil.registerFunction(vehicleType, "cpIsHudTerraformingJobSelected", CpHud.cpIsHudTerraformingJobSelected)
     SpecializationUtil.registerFunction(vehicleType, "cpIsHudUnloaderJobSelected", CpHud.cpIsHudUnloaderJobSelected)
     SpecializationUtil.registerFunction(vehicleType, "cpIsHudStreetJobSelected", CpHud.cpIsHudStreetJobSelected)
 end
@@ -429,6 +430,10 @@ function CpHud:isUnloaderModeDisabled()
     return not self:getCanStartCpCombineUnloader()
 end
 
+function CpHud:isTerraformingModeDisabled()
+    return not self:getCanStartCpTerraformer()
+end
+
 function CpHud:isStreetModeDisabled()
     return false
 end
@@ -461,6 +466,12 @@ function CpHud:cpIsHudUnloaderJobSelected()
     local spec = self.spec_cpHud
     local value = spec.hudSettings.selectedJob:getValue()
     return value == CpHud.hudSettings.COMBINE_UNLOADER_SELECTED
+end
+
+function CpHud:cpIsHudTerraformingJobSelected()
+    local spec = self.spec_cpHud
+    local value = spec.hudSettings.selectedJob:getValue()
+    return value == CpHud.hudSettings.TERRAFORMING_SELECTED
 end
 
 function CpHud:cpIsHudStreetJobSelected()

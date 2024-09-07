@@ -38,6 +38,7 @@ function AIParameterSettingList:init(data, vehicle, class)
 		self.texts = table.copy(self.data.texts)
 		self:validateTexts()
 	end
+
 	--- Text input is only allowed, when the settings values are numeric.
 	self.textInputAllowed = data.textInputAllowed 
 

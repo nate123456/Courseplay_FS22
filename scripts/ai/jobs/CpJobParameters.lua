@@ -97,6 +97,16 @@ function CpJobParameters:isBunkerSiloHudModeDisabled()
     return self:isAIMenuJob()
 end
 
+function CpJobParameters:isTerraformingHudModeDisabled()
+    local vehicle = self.job:getVehicle()
+    if vehicle then
+        if not vehicle:getCanStartCpTerraformer() then 
+            return true
+        end
+    end
+    return self:isAIMenuJob()
+end
+
 function CpJobParameters:isSiloLoadingHudModeDisabled()
     local vehicle = self.job:getVehicle()
     if vehicle then 
@@ -369,4 +379,63 @@ function CpSiloLoaderJobParameters:generateUnloadingStations(setting, oldIx)
         end
     end
     return unloadingStationIds, texts, oldIx
+end
+
+--- AI parameters for the terraforming job.
+---@class CpTerraformingJobParameters : CpJobParameters
+---@field flattenHeight AIParameterSettingList
+CpTerraformingJobParameters = CpObject(CpJobParameters)
+
+function CpTerraformingJobParameters:init(job)
+    CpJobParameters.init(self, job, CpTerraformingJobParameters, "TerraformingJobParameterSetup.xml")
+end
+
+function CpTerraformingJobParameters:generateFlattenHeights(setting, oldIx)
+    local values = {}
+    local texts = {}
+    local terraFarm = FS22_TerraFarm_MCE and FS22_TerraFarm_MCE.TerraFarm
+
+    if terraFarm == nil or self.job == nil then
+        -- no values causes all kinds of problems because there is no null checking in the settings list class. 
+        -- this generates bullshit values which will be replaced because refresh will call this again in the proper moment. 
+        -- the real question is, why does it need to generate values during the loading screen? 
+        AIParameterSettingList.generateValues(setting, values, texts, 0, 2, 0.1, 2, 2)
+        return values, texts, 1
+    end
+
+    local terraFarmMachine =  terraFarm.getMachineManager():getMachineByObject(self.job:getVehicle())
+
+    if terraFarmMachine == nil then
+        AIParameterSettingList.generateValues(setting, values, texts, 0, 1, 0.01, 2, 2)
+        return values, texts
+    end
+
+    local defaultHeight = -1
+
+    if terraFarmMachine.heightLockEnabled then
+        defaultHeight = terraFarmMachine.heightLockHeight
+    else
+        defaultHeight = terraFarmMachine:getCurrentHeight()
+    end
+
+    AIParameterSettingList.generateValues(setting, values, texts,
+    defaultHeight - 1, defaultHeight + 1, 0.01, 2, 3)
+
+    local defaultHeightStr = string.format("%.2f", defaultHeight)
+
+    -- I can't believe I have to do this. MathUtil.round still returns extra zeroes, so the default value fails to match. 
+    -- This is despite the generateValues function rounding the values to 2 decimal places, and not having that problem. 
+    local defaultValue = 0
+    for i, value in ipairs(values) do
+        if string.format("%.2f", value) == defaultHeightStr then
+            defaultValue = value
+            break
+        end
+    end
+
+    return values, texts, defaultValue
+end
+
+function CpTerraformingJobParameters.getSettings(vehicle)
+    return vehicle.spec_cpAITerraformer.cpJob:getCpJobParameters()
 end
